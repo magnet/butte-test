@@ -1,0 +1,30 @@
+/// A response from the server
+/// Useful for getting a greeting back!
+namespace foo.bar;
+
+table HelloReply {
+  message: string;
+}
+
+table HelloRequest {
+  name: string;
+}
+
+table ManyHellosRequest {
+  name: string;
+  num_greetings: int;
+}
+
+namespace baz.buzz;
+enum Foo : int32 {
+  a,
+  b,
+  c
+}
+
+/// A greeter service!
+/// ... with a multiline doc comment?!
+rpc_service Greeter {
+  SayHello(foo.bar.HelloRequest) : foo.bar.HelloReply;
+  SayManyHellos(foo.bar.ManyHellosRequest) : foo.bar.HelloReply (streaming: "server");
+}
